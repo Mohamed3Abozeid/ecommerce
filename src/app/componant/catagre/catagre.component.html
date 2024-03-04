@@ -1,0 +1,15 @@
+<section class="w-100 my-5">
+    <div class="container ">
+        <h1 class="text-center text-main fw-bolder h2 my-4 p-3 card ">All Categories</h1>
+
+        <div class="row  justify-content-center g-3">
+            <div class="col-sm-6 col-md-4 col-lg-3   " *ngFor="let item of alLCategories">
+                <div class="inner  p-3 card">
+                    <img [src]="item.image" [alt]="item.name" class="w-100" height="350">
+                    <h4 class="text-main text-center my-3 h5 fw-bolder">{{item.name}}</h4>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>

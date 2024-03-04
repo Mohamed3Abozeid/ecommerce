@@ -1,0 +1,15 @@
+.add {
+  background-color: #fff;
+  padding: 7px 20px;
+  border: 1px solid #0aad0a;
+  border-radius: 5px;
+  color: black;
+  cursor: pointer;
+  transition: background-color 0.5s;
+  font-weight: bolder;
+}
+.add:hover
+{
+    background-color: #0aad0a;
+    color: #fff;
+}

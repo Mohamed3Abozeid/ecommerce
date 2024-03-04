@@ -1,0 +1,43 @@
+<section class="w-100 my-5" *ngIf="numberOfItem>0;else name">
+    <div class="container shadow p-4 bg-main-light text-center">
+        <h1 class="text-center my-4 fw-bolder text-main card p-3 ">Your Shop Cart </h1>
+        <div class="d-flex justify-content-between align-items-center my-3">
+            <h5 class="text-main fw-bolder card p-2">Total Price : {{cartProduct.totalCartPrice |currency:" "}} EGP</h5>
+            <h5 class="text-main fw-bolder card p-2">Total Number Of Items : {{numberOfItem }} Item </h5>
+        </div>
+        <div class="row border-bottom border-2 p-3 justify-content-center align-items-center"
+            *ngFor="let item of cartProduct.products">
+            <div class="col-sm-6 col-md-2"><img [src]="item.product.imageCover" [alt]="item.product.title"
+                    class="w-100"></div>
+            <div class="col-sm-6 col-md-10  d-flex justify-content-between align-items-center ">
+                <div class="">
+                    <h4 class="p-2 fw-bolder">{{item.product.title.split(' ').slice(0,2).join(" ")}}</h4>
+                    <p class="text-main fw-bolder fs-5 ">Price : {{item.price|currency:" "}} EGP</p>
+                    <button class="btn  border-danger text-danger" (click)="deletItem(('/'+item.product.id))"> <i
+                            class="fa fa-trash"></i> Remove</button>
+                </div>
+                <div class="">
+                    <button class="btn btn-main" (click)="upDateCount(item.product.id,item.count-1)">-</button>
+                    <span class="btn fs-4">{{item.count}}</span>
+                    <button class="btn btn-main" (click)="upDateCount(item.product.id,item.count+1)">+</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="d-flex justify-content-between align-items-center">
+            <button class="btn  border-danger text-danger my-4 p-3 " (click)="deletItem('')">Clear Your Cart <i
+                    class="fa fa-trash"></i></button>
+            <button class=" btn-main my-4 p-3 fw-bolder" [routerLink]="['/payment',cartProduct._id]">Check Out <i
+                    class="fa-brands fa-cc-amazon-pay fa-xl "></i></button>
+        </div>
+    </div>
+
+
+</section>
+
+<ng-template #name>
+    <div class="container shadow p-4 bg-main-light text-center my-5">
+        <h1 class="text-center my-4 fw-bolder text-main card p-3  ">Your Shop Cart </h1>
+        <h2 class="p-4 my-5 card fw-bolder border-danger text-red w-50 mx-auto">Empty Cart !....</h2>
+    </div>
+</ng-template>

@@ -1,0 +1,47 @@
+<section class="shadow col-md-8 mx-auto rounded bg-main-light p-4 my-5">
+    <h1 class="card text-center my-3 text-main h2">CheckOut Session
+    </h1>
+
+    <form [formGroup]="form">
+
+        <div class="my-3"><label for="details">Details</label>
+            <input type="text" class="form-control" formControlName="details" #details>
+
+            <div class="alert alert-danger"
+                *ngIf="form.get('details')?.errors&&(form.get('details')?.touched||details.value.length>0)">
+                <p *ngIf="form.get('details')?.getError('required')">details is required</p>
+                <p *ngIf="form.get('details')?.getError('minlength')">min length is 10 characters</p>
+
+            </div>
+        </div>
+        <div class="my-3"><label for="phone">Phone</label>
+            <input type="text" class="form-control" formControlName="phone">
+            <div class="alert alert-danger font-sm "
+                *ngIf="form.get('phone')?.errors&&form.get('phone')?.touched">
+                <p *ngIf="form.get('phone')?.getError('required')">phone required</p>
+                <p *ngIf="form.get('phone')?.getError('pattern')">"accept only egypt phone numbers"
+                </p>
+
+            </div>
+        </div>
+        <div class="my-3"><label for="city">City</label>
+            <input type="text" class="form-control" formControlName="city">
+            <div class="alert alert-danger font-sm "
+                *ngIf="form.get('city')?.errors&&form.get('city')?.touched">
+                <p *ngIf="form.get('city')?.getError('required')">city required</p>
+                <p *ngIf="form.get('city')?.getError('minlength')">min lenth 3 characters
+                </p>
+            
+            </div>
+        </div>
+
+        <div class="d-flex justify-content-between align-items-center">
+            <button class="btn-main  d-block my-3" (click)="onloinePay()" [disabled]="form.invalid">Online Payment<i
+                    class="fa-brands fa-cc-visa fa-xl ms-2" ></i></button>
+            <button class="btn-main  d-block my-3" (click)="cashPay()" [disabled]="form.invalid" routerLink="/allorders">Cash Payment<i
+                    class="fa-solid fa-sack-dollar fa-xl ms-2"></i></button>
+
+        </div>
+    </form>
+
+</section>

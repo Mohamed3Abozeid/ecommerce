@@ -1,0 +1,68 @@
+<section class="bg-main-light p-4 my-3 rounded mx-auto col-sm-8 ">
+
+    <h1>Reigister Now</h1>
+    <form [formGroup]="reigisterForm" (ngSubmit)="handleForm()">
+
+        <div class="my-3">
+            <label for="name">Name :</label>
+            <input type="text" class="form-control" id="name" formControlName="name">
+
+
+            <div class="alert alert-danger font-sm"
+                *ngIf="reigisterForm.get('name')?.errors&&reigisterForm.get('name')?.touched">
+                <p *ngIf="reigisterForm.get('name')?.getError('required')">name required</p>
+                <p *ngIf="reigisterForm.get('name')?.getError('minlength')">name must be at lest 3 chars</p>
+                <p *ngIf="reigisterForm.get('name')?.getError('maxlength')">name max lenth is 20chars</p>
+            </div>
+        </div>
+        <div class="my-3">
+            <label for="email">Email :</label>
+            <input type="email" class="form-control" id="email" formControlName="email">
+            <div class="alert alert-danger font-sm "
+                *ngIf="reigisterForm.get('email')?.errors&&reigisterForm.get('email')?.touched">
+                <p *ngIf="reigisterForm.get('email')?.getError('required')">email required</p>
+                <p *ngIf="reigisterForm.get('email')?.getError('email')">email invalid</p>
+
+            </div>
+        </div>
+        <div class="my-3">
+            <label for="password">Password :</label>
+            <input type="password" class="form-control" id="password" formControlName="password">
+
+            <div class="alert alert-danger font-sm "
+                *ngIf="reigisterForm.get('password')?.errors&&reigisterForm.get('password')?.touched">
+                <p *ngIf="reigisterForm.get('password')?.getError('required')">password required</p>
+                <p *ngIf="reigisterForm.get('password')?.getError('pattern')">password must start with upperCase then
+                    from 6 to 10</p>
+
+            </div>
+        </div>
+        <div class="my-3">
+            <label for="rePassword">RePassword :</label>
+            <input type="password" class="form-control" id="rePassword" formControlName="rePassword">
+            <div class="alert alert-danger font-sm "
+                *ngIf="reigisterForm.get('rePassword')?.errors&&reigisterForm.get('rePassword')?.touched">
+                <p *ngIf="reigisterForm.get('rePassword')?.getError('required')">rePassword required</p>
+                <p *ngIf="reigisterForm.get('rePassword')?.getError('rePasswordMatch')">RePassword Not Match Password
+
+                </p>
+
+            </div>
+        </div>
+        <div class="my-3">
+            <label for="phone">Phone :</label>
+            <input type="text" class="form-control" id="phone" formControlName="phone">
+
+
+            <div class="alert alert-danger font-sm "
+                *ngIf="reigisterForm.get('phone')?.errors&&reigisterForm.get('phone')?.touched">
+                <p *ngIf="reigisterForm.get('phone')?.getError('required')">phone required</p>
+                <p *ngIf="reigisterForm.get('phone')?.getError('pattern')">"accept only egypt phone numbers"
+                </p>
+
+            </div>
+        </div>
+        <button class="btn-main ms-auto d-block" [disabled]="reigisterForm.invalid">Reigister <i class="fa fa-spin fa-spinner " *ngIf="isLoadind"></i></button>
+       <p class="alert alert-danger" *ngIf="erro">{{erro}}</p>
+    </form>
+</section>

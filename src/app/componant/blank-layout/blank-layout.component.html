@@ -1,0 +1,12 @@
+<app-nav-blank></app-nav-blank>
+
+<div class=" pt-5">
+    <router-outlet><ngx-spinner bdColor="rgb(10,173,10)" size="medium" color="#fff" type="pacman" [fullScreen]="true">
+            <p style="color: white"> Loading... </p>
+        </ngx-spinner></router-outlet>
+
+    <button class="btn-scrol" (click)="scroltop()"><i class="fa-solid fa-arrow-up"></i></button>
+
+</div>
+
+<app-footer></app-footer>

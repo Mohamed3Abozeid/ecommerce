@@ -1,0 +1,31 @@
+<section class="col-md-8 mx-auto bg-main-light rounded shadow my-5">
+    <div class="container p-3">
+        <h1 class="card text-center text-main h2">Your Order</h1>
+
+        <div class="row border-bottom border-2 p-3 " *ngFor="let item of orders[len-1].cartItems">
+            <div class="col-sm-6 col-md-2"><img [src]="item.product.imageCover" [alt]="item.product.title"
+                    class="w-100"></div>
+            <div class="col-sm-6 col-md-10  d-flex justify-content-between align-items-center ">
+                <div class="">
+                    <h4 class="p-2 fw-bolder">{{item.product.title.split(' ').slice(0,2).join(" ")}}</h4>
+                    <p class="text-main fw-bolder fs-5 ">Price : {{item.price|currency:" "}} EGP</p>
+
+                </div>
+
+
+
+                <div>
+                    <p class="fw-bold card p-2 text-main">Number Of Item : {{item.count}}</p>
+                    <p class="fw-bold card p-2 text-main">Brand Nmae : {{item.product
+                        .brand.name}}</p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <button class="btn-main w-100 d-block" routerLink="/home" (click)="doneClick()">Done</button>
+    </div>
+</section>

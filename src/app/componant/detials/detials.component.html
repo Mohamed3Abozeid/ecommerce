@@ -1,0 +1,33 @@
+<section class="my-5 p-5">
+    <div class="container">
+        <div class="row d-flex justify-content-between align-items-center">
+            <div class="col-md-4 ">
+                <img [src]="productDetails.imageCover" [alt]="productDetails.title" class="w-100">
+            </div>
+            <div class="col-md-8 text-center  position-relative">
+                <h4 class="my-3 fw-bolder">{{productDetails.title}}</h4>
+                <p class="text-muted my-3">{{productDetails.description}}</p>
+                <p class="my-3 text-main ">{{productDetails.category.name}}</p>
+                <div class="d-flex justify-content-between align-items-center">
+                    <span>{{productDetails.price}}EGP</span>
+
+                    <div><i class="fas fa-star rating-color"></i><span>{{productDetails.ratingsAverage}}</span></div>
+
+                </div>
+                <button class="btn-main w-100  my-3" (click)="addProduct(productDetails._id,btn)" #btn>+Add To
+                    Cart</button>
+
+                <span class="position-absolute cursor-pointer">
+                    <li class="fa fa-heart fa-2xl" (click)="addToWish(productDetails._id)"
+                        *ngIf="!(wishList.includes($any(productDetails._id)))"></li>
+                    <li class="fa fa-heart fa-2xl text-red" (click)="removeFromWish(productDetails._id)"
+                        *ngIf="wishList.includes($any(productDetails._id))">
+                    </li>
+                </span>
+            </div>
+
+        </div>
+
+
+    </div>
+</section>

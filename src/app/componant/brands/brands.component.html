@@ -1,0 +1,14 @@
+<section class="w-100 p-3 my-5">
+    <div class="container">
+        <h1 class="p-3 card  text-center text-main fw-bolder">All Brands</h1>
+        <div class="row g-4">
+            <div class="col-sm-6 col-md-4 col-lg-3 p-3" *ngFor="let item of AllBrands">
+                <div class="inner card ">
+                    <img [src]="item.image" [alt]="item.name" class="w-100">
+                    <h3 class="h5 text-center text-main fw-bolder">{{item.name}}</h3>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,7 @@
+.fa-xl:hover
+{
+color: #0AAD0A;
+}
+.fa-xl{
+transition: color .5s;
+}

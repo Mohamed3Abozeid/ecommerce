@@ -1,0 +1,11 @@
+.spm
+{
+      position: absolute;
+    top: -10px;
+    left: 15px;
+    font-size: 12px;
+    background-color: #0AAD0A;
+    color: #fff;
+    padding: 5px;
+    border-radius: 6px;
+}

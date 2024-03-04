@@ -1,0 +1,77 @@
+<!-- image slider -->
+<section class="w-100 my-5 p-4">
+    <div class="container">
+
+        <div class="row g-0">
+
+            <div class="col-md-9">
+                <owl-carousel-o [options]="categoryOption">
+                    <ng-template carouselSlide><img src="./assets/homeImg/main-slider-1.jpeg" alt="slide-1" height="400"
+                            class="w-100"></ng-template>
+                    <ng-template carouselSlide><img src="./assets/homeImg/main-slider-2.jpeg" alt="slide-2" height="400"
+                            class="w-100"></ng-template>
+                    <ng-template carouselSlide><img src="./assets/homeImg/main-slider-3.jpeg" alt="slide-3" height="400"
+                            class="w-100"></ng-template>
+                </owl-carousel-o>
+            </div>
+            <div class="col-md-3">
+                <img src="../../../assets/homeImg/slide-1.jpeg" alt="" class="w-100" height="200">
+                <img src="../../../assets/homeImg/slide-2.jpeg" alt="" class="w-100" height="200">
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+<!-- &popular catigories -->
+<section class="w-100 my-5 p-4">
+    <div class="container">
+        <h1 class="h4 text-center my-4 fw-bolder text-main card p-3 ">popular Categories</h1>
+
+        <div class="row">
+            <owl-carousel-o [options]="sliderOption">
+
+                <ng-container *ngFor="let slide of categories">
+                    <ng-template carouselSlide [id]="slide._id">
+                        <img height="300" [src]="slide.image" [alt]="slide.name" [title]="slide.name" class="w-100">
+                        <h3 class="h6 text-main text-center my-3">{{slide.name}}</h3>
+                    </ng-template>
+                </ng-container>
+
+            </owl-carousel-o>
+        </div>
+    </div>
+</section>
+
+
+<!-- !popular products -->
+<section class="w-100 my-5 p-4">
+    <div class="container">
+        <h1 class="h4 text-center my-4 fw-bolder text-main card p-3 ">popular products</h1>
+        <div class="row g-4 ustify-content-center">
+            <div class="col-sm-6 col-md-4 col-lg-3" *ngFor="let item of products">
+                <div class="product p-3 text-center card position-relative">
+                    <div [routerLink]="['/details',item.id]" class="cursor-pointer">
+                        <img [src]="item.imageCover" [alt]="item.title" class="">
+                        <h4 class="text-main h6 my-2">{{item.category.name}}</h4>
+                        <h5 class="my-3 fw-bolder">{{item.title.split(' ').slice(0,2).join(" ")}}</h5>
+                        <div class="d-flex justify-content-between align-items-center my-3">
+                            <span>{{item.price|currency: " "}}EGP</span>
+                            <span><i class="fas fa-star rating-color"></i> {{item.ratingsAverage}}</span>
+                        </div>
+                    </div>
+                    <button class="w-100 btn-main " (click)="addProduct(item._id,btn)" #btn>+Add Product </button>
+                    <span class="position-absolute cursor-pointer">
+                        <li class="fa fa-heart fa-2xl" (click)="addToWish(item._id)"
+                            *ngIf="!(wishList.includes($any(item.id)))"></li>
+                        <li class="fa fa-heart fa-2xl text-red" (click)="removeFromWish(item._id)"
+                            *ngIf="wishList.includes($any(item.id))"></li>
+                    </span>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
